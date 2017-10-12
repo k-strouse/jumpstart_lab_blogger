@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
-    def index
-		@articles = Article.all
+	def index
+		@tags = Tag.all
 	end
 
 	def show
