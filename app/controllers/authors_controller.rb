@@ -1,9 +1,9 @@
 class AuthorsController < ApplicationController
+  before_action :zero_authors_or_authenticated, only: [:new, :create]
+
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
-  before_filter :zero_authors_or_authenticated, only: [:new, :create]
-
-  def zer_authors_or_authenticated
+ def zero_authors_or_authenticated
     unless Author.count == 0 || current_user
       redirect_to root_path
       return false
@@ -21,7 +21,7 @@ class AuthorsController < ApplicationController
   def show
   end
 
-  # GET /authors/new
+    # GET /authors/new
   def new
     @author = Author.new
   end
